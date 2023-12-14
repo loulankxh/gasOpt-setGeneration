@@ -41,18 +41,14 @@ refundTotal(p,s) :- refund(p, _), s = sum m: refund(p,m).
 balanceOf(p,s) :- investTotal(p,i), refundTotal(p,r), s := i-r.
 
 // Transaction conditions
-invest(p, n) :- recv_invest(), msgSender(p), msgValue(n), closed(false),
-    raised(s), target(t), s<t.
+invest(p, n) :- recv_invest(), msgSender(p), msgValue(n), closed(false), raised(s), target(t), s<t.
 
 closed(true) :- recv_close(), msgSender(s), owner(s).
 
-refund(p, n) :- recv_refund(), msgSender(p), closed(true),
-            raised(r), target(t), r<t,
-            balanceOf(p, n), n > 0.
+refund(p, n) :- recv_refund(), msgSender(p), closed(true), raised(r), target(t), r<t, balanceOf(p, n), n > 0.
 send(p,n) :- refund(p,n).
 
-withdraw(p,r) :- recv_withdraw(), msgSender(p), beneficiary(p),
-            raised(r), target(t), r>=t.
+withdraw(p,r) :- recv_withdraw(), msgSender(p), beneficiary(p), raised(r), target(t), r>=t.
 
 send(p,r) :- withdraw(p,r).
 

@@ -79,6 +79,8 @@ def all_derived_nodes(material_set_id, graph):
     visited = []
     for m_id in material_set_id:
         visited.append(m_id)
+        if not graph.has_node(m_id): # controllable: public interface "decimals" is not in any edge, thus not in relation dependencies, and thus not in graph G
+            continue
         for s in graph.successors(m_id):
             if (not s in material_set_id) and (not s in queue) :
                 queue.append(s)
@@ -169,6 +171,8 @@ def replace_one_node_with_direct_dependency(direct_dependency_id, material_set_i
 
     for i in range(len(material_set_id)):
         # terminate at the root
+        if not graph.has_node(material_set_id[i]): # controllable: public interface "decimals" is not in any edge, thus not in relation dependencies, and thus not in graph G
+            continue
         if len(list(graph.predecessors(material_set_id[i])) ) == 0:
             continue
 
@@ -211,6 +215,8 @@ def set_of_minimal_relations(material_set_id, direct_dependency_id, graph):
 # rvst in full g vs upstream g
 def is_terminate_materialize_set(ms, G):
     for n in ms:
+        if not G.has_node(n): # controllable: public interface "decimals" is not in any edge, thus not in relation dependencies, and thus not in graph G
+            continue
         if len(list(G.predecessors(n))) != 0:
             return False
     else:

@@ -46,6 +46,8 @@ def traceback_upstream_dag(direct_dependency_set_all,txn_head, g):
             break
 
         to_visit = queue.pop(0)
+        if not g.has_node(to_visit): # controllable: public interface "decimals" is not in any edge, thus not in relation dependencies, and thus not in graph G
+            continue
         g_upstream.add_node(to_visit, **g.nodes[to_visit])
 
         ## not terminating relation .e.g txn head

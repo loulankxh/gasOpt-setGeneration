@@ -1,1 +1,1 @@
-totalOut,spentTotal,totalIn,allowanceTotal,totalMint,allMint,balanceOf,allBurn,totalBurn,owner,allowance,totalSupply,controller
+totalIn,totalMint,name,controller,balanceOf,allMint,increaseAllowanceTotal,symbol,totalSupply,allBurn,totalOut,totalBurn,decreaseAllowanceTotal,decimals,allowance,spentTotal,mint,

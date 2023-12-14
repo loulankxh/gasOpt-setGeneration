@@ -6,6 +6,7 @@ if __name__ == '__main__':
     import networkx as nx
     import os
     import csv
+    import matplotlib.pyplot as plt
 
 
     for root, dirs, files in os.walk("./view-materialization/relation-dependencies", topdown=False):
@@ -20,26 +21,8 @@ if __name__ == '__main__':
 
             datalog_file = os.path.join("./benchmarks", name_normalize + '.dl')
             print(os.path.join("./benchmarks", name_normalize + '.dl'))
-
-
-            public_relation_readonly = []
-            calculate_on_demand = []
-            with open(datalog_file,'r') as dl:
-                for l in dl:
-                    if '//' in l:
-                        continue
-                    if '.public' in l and (not 'recv_' in l):
-                        public_relation_readonly.append(l.split(' ')[1].split('(')[0])
-                        # print('public', public_relation_readonly[-1])
-                    elif '.function' in l:
-                        calculate_on_demand.append(l.split(' ')[1])
-                    # elif '.public' in l and ('recv_' in l):
-                    #     recv_list.append(l.split(' ')[1].split('(')[0].split('_')[1].split('\n')[0])
-                    #     #print('recv', recv_list[-1])
-            print('\n\npublic_relation_readonly')
-            pprint(public_relation_readonly)
-            print('\n\ncalculate on demand')
-            pprint(calculate_on_demand)
+            
+            
             df = pd.read_csv(os.path.join(root, name),header=0)
 
 
@@ -66,6 +49,35 @@ if __name__ == '__main__':
             print(txn_head_all)
 
 
+            # calculate_on_demand = []
+            noMaterialize_set = set()
+            noMaterialize_file = os.path.join("./view-materialization/cannot-materialized/", name.split(".")[0] + '.csv')    # name_normalize
+            print(os.path.join("./view-materialization/cannot-materialized/", name.split(".")[0] + '.csv'))
+            with open(noMaterialize_file, 'r') as file:
+                csv_reader = csv.reader(file)
+                for row in csv_reader:
+                    noMaterialize_set = noMaterialize_set.union(set(row))
+            calculate_on_demand = list(noMaterialize_set-txn_head_all)   
+            print('\n\ncalculate on demand')
+            pprint(calculate_on_demand)     
+
+            public_relation_readonly = []
+            with open(datalog_file,'r') as dl:
+                for l in dl:
+                    if '//' in l:
+                        continue
+                    if '.public' in l and (not 'recv_' in l):
+                        public_relation_readonly.append(l.split(' ')[1].split('(')[0])
+                        # print('public', public_relation_readonly[-1])
+                    # elif '.function' in l:
+                    #     calculate_on_demand.append(l.split(' ')[1])
+                    # elif '.public' in l and ('recv_' in l):
+                    #     recv_list.append(l.split(' ')[1].split('(')[0].split('_')[1].split('\n')[0])
+                    #     #print('recv', recv_list[-1])
+            print('\n\npublic_relation_readonly')
+            pprint(public_relation_readonly)
+
+
 
             # direct dependency relations
             direct_dependency_set_all = set()
@@ -79,8 +91,8 @@ if __name__ == '__main__':
             #direct_dependency_set_all = direct_dependency_set_all - special_keys # Lan: remove special keys, but for full set, we do not have to do so
             print('\n\n\ndirect_dependency_set_all')
             pprint(direct_dependency_set_all)
+
             # pos = nx.nx_agraph.graphviz_layout(G, prog='neato')
-            #
             # nx.draw(G, pos, with_labels=True, font_weight='normal')
             # plt.show()
 
@@ -92,6 +104,9 @@ if __name__ == '__main__':
                 if len(queue) == 0:
                     break
                 to_visit = queue.pop(0)
+                
+                if not G.has_node(to_visit): # controllable: public interface "decimals" is not in any edge, thus not in relation dependencies, and thus not in graph G
+                    continue
 
                 #if not (to_visit in txn_head_all or to_visit in calculate_on_demand): # Lan: in theory, we will not have circles, expect txns
                 for pred in G.predecessors(to_visit):
@@ -114,7 +129,10 @@ if __name__ == '__main__':
 
             with open("./view-materialization/full-set/" + name_normalize + '.csv', 'w', newline='') as csv_file:
                 csv_writer = csv.writer(csv_file)
-                csv_writer.writerow(list(full_set))
+                # csv_writer.writerow(list(full_set))
+                full_func_list = list(full_set)
+                full_func_list.extend([""]+list(calculate_on_demand))
+                csv_writer.writerow(full_func_list)
             #df = pd.DataFrame(full_set)==
             #df.to_csv("/home/lan/gasOpt/declarative-smart-contracts/view-materialization/full-set/" + name_normalize +'.csv', index=False, header=False)
 
