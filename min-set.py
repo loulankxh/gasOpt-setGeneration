@@ -56,18 +56,17 @@ if __name__ == '__main__':
             print(txn_head_all)
 
 
-            # calculate_on_demand = []
-            noMaterialize_set = set()
-            noMaterialize_file = os.path.join("./view-materialization/cannot-materialized/", name.split(".")[0] + '.csv')    # name_normalize
-            print(os.path.join("./view-materialization/cannot-materialized/", name.split(".")[0] + '.csv'))
-            with open(noMaterialize_file, 'r') as file:
-                csv_reader = csv.reader(file)
-                for row in csv_reader:
-                    noMaterialize_set = noMaterialize_set.union(set(row))
-            calculate_on_demand = list(noMaterialize_set-txn_head_all)   
-            print('\n\ncalculate on demand')
-            pprint(calculate_on_demand)     
-
+            # noMaterialize_set = set()
+            # noMaterialize_file = os.path.join("./view-materialization/cannot-materialized/", name.split(".")[0] + '.csv')    # name_normalize
+            # print(os.path.join("./view-materialization/cannot-materialized/", name.split(".")[0] + '.csv'))
+            # with open(noMaterialize_file, 'r') as file:
+            #     csv_reader = csv.reader(file)
+            #     for row in csv_reader:
+            #         noMaterialize_set = noMaterialize_set.union(set(row))
+            # calculate_on_demand = list(noMaterialize_set-txn_head_all)   
+            # print('\n\ncalculate on demand')
+            # pprint(calculate_on_demand)     
+            calculate_on_demand = []
             public_relation_readonly = []
             with open(datalog_file,'r') as dl:
                 for l in dl:
@@ -76,11 +75,13 @@ if __name__ == '__main__':
                     if '.public' in l and (not 'recv_' in l):
                         public_relation_readonly.append(l.split(' ')[1].split('(')[0])
                         # print('public', public_relation_readonly[-1])
-                    # elif '.function' in l:
-                    #     calculate_on_demand.append(l.split(' ')[1])
+                    elif '.function' in l:
+                        calculate_on_demand.append(l.split(' ')[1])
                     # elif '.public' in l and ('recv_' in l):
                     #     recv_list.append(l.split(' ')[1].split('(')[0].split('_')[1].split('\n')[0])
                     #     #print('recv', recv_list[-1])
+            print('\n\ncalculate on demand')
+            pprint(calculate_on_demand)
             print('\n\npublic_relation_readonly')
             pprint(public_relation_readonly)
 
@@ -88,7 +89,7 @@ if __name__ == '__main__':
 
             # direct dependency relations
             direct_dependency_set_all = set() # may also include some relations from calculate_on_demand => remove such min-set choices
-            for thead in txn_head_all:
+            for thead in (txn_head_all or calculate_on_demand):
                 for pred in G.predecessors(thead):
                     print(pred)
                     # well-defined datalog

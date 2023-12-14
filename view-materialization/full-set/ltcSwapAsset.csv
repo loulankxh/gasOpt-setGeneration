@@ -1,1 +1,2 @@
-totalIn,totalMint,allBurn,totalOut,totalBurn,balanceOf,allowanceTotal,allMint,allowance,spentTotal,totalSupply,,owner
+totalSupply,owner,oldOwner,spentTotal,allMint,totalMint,balanceOf,allBurn,newOwner,totalIn,totalOut,effectiveTime,allowance,allowanceTotal,totalBurn,,"owner
+"

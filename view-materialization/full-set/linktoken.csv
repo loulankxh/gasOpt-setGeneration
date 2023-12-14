@@ -1,1 +1,2 @@
-totalIn,totalMint,allBurn,owner,totalOut,totalBurn,balanceOf,decreaseAllowanceTotal,allowanceTotal,allMint,allowance,spentTotal,totalSupply,,validRecipient
+validRecipient,totalSupply,owner,spentTotal,allMint,totalMint,balanceOf,allBurn,totalIn,decreaseAllowanceTotal,totalOut,allowance,allowanceTotal,totalBurn,,"validRecipient
+"
