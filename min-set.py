@@ -23,7 +23,7 @@ if __name__ == '__main__':
             #print(os.path.join(root, name))
             name_normalize = str.lower(name.split('.')[0][0])+name.split('.')[0][1:]
             print(name_normalize)
-            # if not 'auction' in name_normalize:
+            # if not 'controllable' in name_normalize:
             #     continue 
 
             datalog_file = os.path.join("./benchmarks", name_normalize.split(".")[0] + '.dl')
@@ -38,6 +38,10 @@ if __name__ == '__main__':
             txn_head_all = set()
             G = nx.DiGraph()
             for i,r in df.iterrows():
+                if(r['#body']==' '):
+                    if(r['isTx']):
+                        txn_head_all.add(r['head'])
+                    continue
                 # G.add_edge(r['#body'], r['head'], is_agg= r['isAgg'], rule_id= r['ruleId'],)
                 edge_data = G.get_edge_data(r['#body'], r['head'])
                 if edge_data is None:
@@ -76,7 +80,7 @@ if __name__ == '__main__':
                         public_relation_readonly.append(l.split(' ')[1].split('(')[0])
                         # print('public', public_relation_readonly[-1])
                     elif '.function' in l:
-                        calculate_on_demand.append(l.split(' ')[1])
+                        calculate_on_demand.append(l.split(' ')[1].split('\n')[0])
                     # elif '.public' in l and ('recv_' in l):
                     #     recv_list.append(l.split(' ')[1].split('(')[0].split('_')[1].split('\n')[0])
                     #     #print('recv', recv_list[-1])
@@ -89,7 +93,8 @@ if __name__ == '__main__':
 
             # direct dependency relations
             direct_dependency_set_all = set() # may also include some relations from calculate_on_demand => remove such min-set choices
-            for thead in (txn_head_all or calculate_on_demand):
+            head_all = txn_head_all | set(calculate_on_demand)
+            for thead in head_all:
                 for pred in G.predecessors(thead):
                     print(pred)
                     # well-defined datalog

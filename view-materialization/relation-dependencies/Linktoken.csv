@@ -1,5 +1,6 @@
 #body,head,ruleId,isAgg,isTx
 mint,allMint,0,true,false
+ ,validRecipient,1,false,false
 balanceOf,transfer,2,false,true
 validRecipient,transfer,2,false,true
 owner,burn,3,false,true

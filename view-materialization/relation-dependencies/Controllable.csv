@@ -15,10 +15,13 @@ increaseAllowanceTotal,allowance,12,false,false
 mint,allMint,14,true,false
 balanceOf,controllerTransfer,15,false,true
 controller,controllerTransfer,15,false,true
+ ,mint,16,false,true
+ ,decreaseAllowance,17,false,true
 controllerTransfer,transfer,18,false,false
 burn,totalBurn,19,true,false
 allowance,increaseAllowance,20,false,true
 mint,totalMint,21,true,false
+ ,increaseAllowance,22,false,true
 allBurn,totalSupply,23,false,false
 allMint,totalSupply,23,false,false
 balanceOf,transfer,24,false,true
@@ -26,9 +29,9 @@ transfer,totalOut,25,true,false
 balanceOf,totalBalances,26,true,false
 controllerRedeem,burn,27,false,false
 totalIn,balanceOf,28,false,false
-totalMint,balanceOf,28,false,false
 totalBurn,balanceOf,28,false,false
 totalOut,balanceOf,28,false,false
+totalMint,balanceOf,28,false,false
 balanceOf,burn,29,false,true
 allowance,transferFrom,32,false,true
 balanceOf,transferFrom,32,false,true

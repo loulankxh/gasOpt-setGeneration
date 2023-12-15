@@ -21,6 +21,7 @@ paused,transferFrom,13,false,true
 balanceOf,transferFrom,13,false,true
 balanceOf,burn,14,false,true
 mint,allMint,15,true,false
+ ,increaseAllowance,16,false,true
 burn,totalBurn,17,true,false
 mint,totalMint,18,true,false
 allMint,totalSupply,19,false,false

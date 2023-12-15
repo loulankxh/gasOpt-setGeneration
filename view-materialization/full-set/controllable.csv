@@ -1,1 +1,1 @@
-totalSupply,totalMint,balanceOf,allBurn,increaseAllowanceTotal,symbol,decreaseAllowanceTotal,totalOut,mint,controller,allMint,decimals,totalIn,allowance,name,spentTotal,totalBurn,
+balanceOf,totalOut,totalBurn,increaseAllowanceTotal,decimals,name,symbol,decreaseAllowanceTotal,allBurn,totalSupply,spentTotal,allMint,allowance,controller,totalMint,totalIn,

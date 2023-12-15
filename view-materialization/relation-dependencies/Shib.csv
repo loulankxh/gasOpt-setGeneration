@@ -14,6 +14,7 @@ totalOut,balanceOf,7,false,false
 decreaseAllowance,decreaseAllowanceTotal,8,true,false
 transferFrom,spentTotal,9,true,false
 burnFrom,transferFrom,10,false,false
+ ,increaseAllowance,11,false,true
 transferFrom,transfer,12,false,false
 allowance,decreaseAllowance,13,false,true
 mint,allMint,14,true,false
@@ -26,6 +27,7 @@ balanceOf,transfer,20,false,true
 burnFrom,burn,21,false,false
 transfer,totalOut,22,true,false
 balanceOf,totalBalances,23,true,false
+ ,decreaseAllowance,24,false,true
 owner,mint,25,false,true
 allowance,transferFrom,26,false,true
 balanceOf,transferFrom,26,false,true
