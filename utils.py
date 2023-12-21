@@ -34,7 +34,7 @@ def plot_graph(g, node_label_mapping_g=None):
     plt.show()
 
 # start from direct dependency relation trace back to transaction headr
-def traceback_upstream_dag(direct_dependency_set_all,txn_head, g):
+def traceback_upstream_dag(direct_dependency_set_all,txn_head, g): # Decide which relation (with its body) can be calculated
     # global g_upstream, pred
     g_upstream = nx.DiGraph()
     queue = list(direct_dependency_set_all)
@@ -54,13 +54,17 @@ def traceback_upstream_dag(direct_dependency_set_all,txn_head, g):
         # rvst consider other terminating conditions like aggregated result, child of constructor
 
         if not to_visit in txn_head:
+            noAgg = True
+            noTxn = True
             for pred in g.predecessors(to_visit):
-                # Lan: removing txn and special keys
                 if pred in txn_head or pred in special_keys:
-                    continue
+                    noTxn = False
                 candidate_edge = g.get_edge_data(pred, to_visit)
-                if not candidate_edge['is_agg']: # Lan: need to be modified there: should not include txn in upstream graph. BUt why there is true=> when txn as body, always acting as aggregation?
-                    # add edge
+                if candidate_edge['is_agg']: # Lan: one aggregation body, all bodies can not be added
+                    noAgg = False
+            if noAgg and noTxn:
+                for pred in g.predecessors(to_visit):
+                    candidate_edge = g.get_edge_data(pred, to_visit) # add edge
                     g_upstream.add_edge(pred, to_visit, **candidate_edge)
                     queue.append(pred)
 

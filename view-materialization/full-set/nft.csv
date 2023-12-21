@@ -1,1 +1,1 @@
-exists,balanceOf,latestTransfer,isApprovedForAll,owner,approved,ownerOf,
+exists,approved,approval,balanceOf,isApprovedForAll,latestTransfer,ownerOf,owner,

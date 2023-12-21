@@ -19,7 +19,7 @@ from utils import dprint,node_label
 #
 import matplotlib.pyplot as plt
 
-def visit_first_node_in_queue(queue, visited, G):
+def visit_first_node_in_queue(queue, visited, G): # if all body relations of a head are included => add this head
     assert len(queue)!=0
 
     for q in queue:
@@ -74,7 +74,7 @@ def visit_first_node_in_queue(queue, visited, G):
     return to_visit, is_visit_success
 
 # all downstream head in active update rules
-def all_derived_nodes(material_set_id, graph):
+def all_derived_nodes(material_set_id, graph): # from given material set to all reachable heads
     queue = []
     visited = []
     for m_id in material_set_id:

@@ -23,7 +23,7 @@ if __name__ == '__main__':
             #print(os.path.join(root, name))
             name_normalize = str.lower(name.split('.')[0][0])+name.split('.')[0][1:]
             print(name_normalize)
-            # if not 'controllable' in name_normalize:
+            # if not 'nft' in name_normalize:
             #     continue 
 
             datalog_file = os.path.join("./benchmarks", name_normalize.split(".")[0] + '.dl')
@@ -93,7 +93,7 @@ if __name__ == '__main__':
 
             # direct dependency relations
             direct_dependency_set_all = set() # may also include some relations from calculate_on_demand => remove such min-set choices
-            head_all = txn_head_all | set(calculate_on_demand)
+            head_all = txn_head_all | set(calculate_on_demand) # Lan: must be calculated
             for thead in head_all:
                 for pred in G.predecessors(thead):
                     print(pred)
@@ -101,7 +101,7 @@ if __name__ == '__main__':
                     if ((thead in txn_head_all) or (thead in calculate_on_demand)):
                         if not (pred in txn_head_all or pred.startswith('recv_') or pred in calculate_on_demand):
                             direct_dependency_set_all.add(pred)
-            direct_dependency_set_all = direct_dependency_set_all - special_keys # Lan: remove special keys
+            direct_dependency_set_all = direct_dependency_set_all - special_keys # Lan: to calculate its head, the bodies must be materialized or stored
             print('\n\n\ndirect_dependency_set_all')
             pprint(direct_dependency_set_all)
             # pos = nx.nx_agraph.graphviz_layout(G, prog='neato')
@@ -110,7 +110,24 @@ if __name__ == '__main__':
             # plt.show()
 
             direct_dependency_set_all = direct_dependency_set_all.union(set(public_relation_readonly))
-            # txn_head_all = txn_head_all.union(calculate_on_demand)
+
+            judgement_set = set()
+            judgement_file = os.path.join("./view-materialization/contain-judgement/", name.split(".")[0] + '.csv')    # name_normalize
+            print(os.path.join("./view-materialization/contain-judgement/", name.split(".")[0] + '.csv'))
+            with open(judgement_file, 'r') as file:
+                csv_reader = csv.reader(file)
+                for row in csv_reader:
+                    judgement_set = judgement_set.union(set(row))
+            judgement_set = judgement_set - txn_head_all - set(calculate_on_demand)
+            print("\n\nrelations which can not be simplified")
+            pprint(judgement_set)
+            direct_dependency_set_all = judgement_set.union(direct_dependency_set_all)
+            # get all relations which can not be skipped (except txn and manually defind functions)
+            # 1. relation that can only be materialized; => always be kept until into the final choices of min sets
+            # 2. materialized or calculated; => can be replaced or kept
+            # 3. only be calculated; => can be replaced or kept, corresponding kept min set should be removed
+
+
 
             upstream_dag =  traceback_upstream_dag(direct_dependency_set_all, txn_head=txn_head_all,g=G)
             # plot_graph(G)
@@ -131,16 +148,6 @@ if __name__ == '__main__':
             print("count minimal_all", len(minimal_all))
             pprint(node_label(minimal_all,upstream_dag))
 
-            # get all relations which can not be skipped
-            noSimplification_set = direct_dependency_set_all.union(txn_head_all)
-            noSimplification_file = os.path.join("./view-materialization/cannot-simplified/", name.split(".")[0] + '.csv')    # name_normalize
-            print(os.path.join("./view-materialization/cannot-simplified/", name.split(".")[0] + '.csv'))
-            with open(noSimplification_file, 'r') as file:
-                csv_reader = csv.reader(file)
-                for row in csv_reader:
-                    noSimplification_set = noSimplification_set.union(set(row))
-            print("\n\nrelations which can not be simplified")
-            pprint(noSimplification_set)
 
             # get full set
             full_set = set()
@@ -157,7 +164,7 @@ if __name__ == '__main__':
             # get min set with its corresponding function set
             min_func_all = list()
             for min_set in minimal_all:
-                func_set = (full_set - set(min_set)) & noSimplification_set
+                func_set = (full_set - set(min_set)) & direct_dependency_set_all
                 min_func_list = list(min_set)
                 min_func_list.extend([""]+list(func_set))
                 print("\nmin & function relations")

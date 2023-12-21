@@ -15,7 +15,7 @@ if __name__ == '__main__':
             print(os.path.join(root, name))
             name_normalize = str.lower(name.split('.')[0][0])+name.split('.')[0][1:]
             print(name_normalize)
-            # if not 'ltcSwapAsset' in name_normalize:
+            # if not 'erc1155' in name_normalize:
             #     continue
 
 
@@ -70,7 +70,7 @@ if __name__ == '__main__':
                     if '//' in l:
                         continue
                     if '.public' in l and (not 'recv_' in l):
-                        public_relation_readonly.append(l.split(' ')[1].split('(')[0])
+                        public_relation_readonly.append(l.split(' ')[1].split('(')[0].split('\n')[0])
                         # print('public', public_relation_readonly[-1])
                     elif '.function' in l:
                         calculate_on_demand.append(l.split(' ')[1].split('\n')[0])
