@@ -101,7 +101,7 @@ if __name__ == '__main__':
                     if ((thead in txn_head_all) or (thead in calculate_on_demand)):
                         if not (pred in txn_head_all or pred.startswith('recv_') or pred in calculate_on_demand):
                             direct_dependency_set_all.add(pred)
-            direct_dependency_set_all = direct_dependency_set_all - special_keys # Lan: to calculate its head, the bodies must be materialized or stored
+            # direct_dependency_set_all = direct_dependency_set_all - special_keys # Lan: to calculate its head, the bodies must be materialized or stored
             print('\n\n\ndirect_dependency_set_all')
             pprint(direct_dependency_set_all)
             # pos = nx.nx_agraph.graphviz_layout(G, prog='neato')
@@ -164,6 +164,7 @@ if __name__ == '__main__':
             # get min set with its corresponding function set
             min_func_all = list()
             for min_set in minimal_all:
+                min_set = set(min_set) - special_keys # remove all special keys
                 func_set = (full_set - set(min_set)) & direct_dependency_set_all
                 min_func_list = list(min_set)
                 min_func_list.extend([""]+list(func_set))

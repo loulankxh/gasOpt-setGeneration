@@ -57,7 +57,8 @@ def traceback_upstream_dag(direct_dependency_set_all,txn_head, g): # Decide whic
             noAgg = True
             noTxn = True
             for pred in g.predecessors(to_visit):
-                if pred in txn_head or pred in special_keys:
+                # if pred in txn_head or pred in special_keys:
+                if pred in txn_head: # can use special keys to replace its head relation
                     noTxn = False
                 candidate_edge = g.get_edge_data(pred, to_visit)
                 if candidate_edge['is_agg']: # Lan: one aggregation body, all bodies can not be added

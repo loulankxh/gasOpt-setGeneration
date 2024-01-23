@@ -2,18 +2,22 @@
 allowanceTotal,allowance,0,false,false
 spentTotal,allowance,0,false,false
 allowance,increaseAllowance,1,false,true
- ,setApprovalForAll,2,false,true
-totalIn,balanceOf,3,false,false
+msgSender,increaseAllowance,1,false,true
+msgSender,setApprovalForAll,2,false,true
 totalBurn,balanceOf,3,false,false
+totalIn,balanceOf,3,false,false
 totalOut,balanceOf,3,false,false
 totalMint,balanceOf,3,false,false
 setApprovalForAll,isApprovedForAll,4,false,false
 burn,allBurn,5,true,false
 balanceOf,burn,6,false,true
 owner,burn,6,false,true
+msgSender,burn,6,false,true
 burn,totalBurn,7,true,false
 owner,mint,9,false,true
+msgSender,mint,9,false,true
 transferFrom,transfer,10,false,false
+msgSender,transfer,11,false,true
 balanceOf,transfer,11,false,true
 allMint,totalSupply,12,false,false
 allBurn,totalSupply,12,false,false
@@ -26,5 +30,6 @@ increaseAllowance,allowanceTotal,18,true,false
 transferFrom,spentTotal,19,true,false
 balanceOf,transferFrom,20,false,true
 allowance,transferFrom,20,false,true
-totalSupply,unequalBalance,21,false,false
+msgSender,transferFrom,20,false,true
 totalBalances,unequalBalance,21,false,false
+totalSupply,unequalBalance,21,false,false

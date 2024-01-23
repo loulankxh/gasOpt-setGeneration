@@ -93,7 +93,8 @@ totalSupply(n) :- allMint(m), allBurn(b), n := m - b.
 
 // New rules
 .decl transferFrom(from: address, to: address, spender: address, amount: uint)
-transferFrom(o,r,s,n) :- recv_transferFrom(o,r,n), balanceOf(o,m), m>=n, msgSender(s), allowance(o,s,k), k>=n, n>0, r!=0, n+m>=m.
+//transferFrom(o,r,s,n) :- recv_transferFrom(o,r,n), balanceOf(o,m), m>=n, msgSender(s), allowance(o,s,k), k>=n, n>0, r!=0, n+m>=m.
+transferFrom(o,r,s,n) :- recv_transferFrom(o,r,n), balanceOf(o,m),balanceOf(r,q), m>=n, msgSender(s), allowance(o,s,k), k>=n, r!=0, n+q>=q.
 transfer(o,r,n) :- transferFrom(o,r,_,n).
 
 increaseAllowance(o,s,d) :- recv_approve(s,n), msgSender(o), allowance(o,s,m), d:=n-m.

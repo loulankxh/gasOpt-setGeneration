@@ -4,6 +4,7 @@ mint,allMint,2,true,false
 totalSupply,unequalBalance,3,false,false
 totalBalances,unequalBalance,3,false,false
 owner,burn,4,false,true
+msgSender,burn,4,false,true
 balanceOf,burn,4,false,true
 totalMint,balanceOf,5,false,false
 totalBurn,balanceOf,5,false,false
@@ -15,13 +16,17 @@ burn,totalBurn,9,true,false
 mint,totalMint,10,true,false
 allBurn,totalSupply,11,false,false
 allMint,totalSupply,11,false,false
+msgSender,transfer,12,false,true
 balanceOf,transfer,12,false,true
 transfer,totalOut,13,true,false
 balanceOf,totalBalances,14,true,false
 allowanceTotal,allowance,15,false,false
 spentTotal,allowance,15,false,false
+msgSender,mint,16,false,true
 owner,mint,16,false,true
+msgSender,increaseAllowance,17,false,true
 allowance,increaseAllowance,17,false,true
+msgSender,transferFrom,18,false,true
 allowance,transferFrom,18,false,true
 balanceOf,transferFrom,18,false,true
 burn,allBurn,19,true,false

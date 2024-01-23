@@ -2,6 +2,7 @@
 mint,allMint,0,true,false
 totalIn,balanceOf,1,false,false
 totalOut,balanceOf,1,false,false
+msgSender,burn,3,false,true
 balanceOf,burn,3,false,true
 owner,burn,3,false,true
 transfer,totalOut,4,true,false
@@ -11,6 +12,7 @@ burn,allBurn,7,true,false
 allMint,totalSupply,8,false,false
 allBurn,totalSupply,8,false,false
 owner,mint,9,false,true
+msgSender,mint,9,false,true
 mint,transfer,10,false,false
 burn,transfer,11,false,false
 balanceOf,transfer,12,false,true

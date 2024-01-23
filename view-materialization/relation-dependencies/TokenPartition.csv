@@ -1,5 +1,6 @@
 #body,head,ruleId,isAgg,isTx
 issueByPartition,allMint,0,true,false
+msgSender,issueByPartition,1,false,true
 owner,issueByPartition,1,false,true
 balanceOfByPartition,totalBalancesByPartition,2,true,false
 issueTotalByPartition,totalSupplyByPartition,4,false,false
@@ -10,6 +11,7 @@ allBurn,totalSupply,7,false,false
 allMint,totalSupply,7,false,false
 issueByPartition,totalMint,8,true,false
 owner,redeemByPartition,9,false,true
+msgSender,redeemByPartition,9,false,true
 balanceOfByPartition,redeemByPartition,9,false,true
 redeemByPartition,allBurn,10,true,false
 totalBalancesByPartition,unequalBalance,12,false,false
@@ -22,3 +24,4 @@ totalBurn,balanceOfByPartition,16,false,false
 totalMint,balanceOfByPartition,16,false,false
 totalOut,balanceOfByPartition,16,false,false
 balanceOfByPartition,transferByPartition,17,false,true
+msgSender,transferByPartition,17,false,true

@@ -1,4 +1,5 @@
 #body,head,ruleId,isAgg,isTx
+thisBalance,totalReceived,0,false,false
 totalReleased,totalReceived,0,false,false
 release,totalReleased,1,true,false
 shares,totalShares,2,true,false

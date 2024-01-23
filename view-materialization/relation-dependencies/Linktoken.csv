@@ -1,22 +1,28 @@
 #body,head,ruleId,isAgg,isTx
 mint,allMint,0,true,false
- ,validRecipient,1,false,false
+this,validRecipient,1,false,false
+msgSender,transfer,2,false,true
 balanceOf,transfer,2,false,true
 validRecipient,transfer,2,false,true
 owner,burn,3,false,true
 balanceOf,burn,3,false,true
+msgSender,burn,3,false,true
 totalMint,balanceOf,4,false,false
 totalIn,balanceOf,4,false,false
 totalOut,balanceOf,4,false,false
 totalBurn,balanceOf,4,false,false
 decreaseAllowance,decreaseAllowanceTotal,6,true,false
 validRecipient,decreaseAllowance,7,false,true
+msgSender,decreaseAllowance,7,false,true
 allowance,decreaseAllowance,7,false,true
 owner,mint,9,false,true
+msgSender,mint,9,false,true
 transfer,totalIn,10,true,false
 allowance,transferFrom,11,false,true
+msgSender,transferFrom,11,false,true
 validRecipient,transferFrom,11,false,true
 balanceOf,transferFrom,11,false,true
+msgSender,increaseAllowance,12,false,true
 validRecipient,increaseAllowance,12,false,true
 transferFrom,transfer,14,false,false
 burn,totalBurn,15,true,false
@@ -32,6 +38,7 @@ decreaseAllowanceTotal,allowance,24,false,false
 allowanceTotal,allowance,24,false,false
 spentTotal,allowance,24,false,false
 burn,allBurn,25,true,false
+msgSender,increaseAllowance,26,false,true
 allowance,increaseAllowance,26,false,true
 validRecipient,increaseAllowance,26,false,true
 increaseAllowance,allowanceTotal,28,true,false

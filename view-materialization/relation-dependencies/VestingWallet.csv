@@ -2,11 +2,16 @@
 release,released,0,true,false
 beneficiary,send,2,false,false
 release,send,2,false,false
+now,earlyRelease,3,false,false
 released,earlyRelease,3,false,false
 start,earlyRelease,3,false,false
+thisBalance,release,6,false,true
 released,release,6,false,true
+now,release,6,false,true
 duration,release,6,false,true
 start,release,6,false,true
 duration,release,7,false,true
+now,release,7,false,true
+thisBalance,release,7,false,true
 released,release,7,false,true
 start,release,7,false,true

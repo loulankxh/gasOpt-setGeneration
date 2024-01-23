@@ -1,5 +1,6 @@
 #body,head,ruleId,isAgg,isTx
 transferFrom,transfer,0,false,false
+now,canTransfer,1,false,false
 unlockTime,canTransfer,1,false,false
 disallowPrecirculation,precirculated,2,false,false
 mint,allMint,4,true,false
@@ -8,6 +9,7 @@ allowPrecirculation,precirculated,6,false,false
 totalSupply,unequalBalance,7,false,false
 totalBalances,unequalBalance,7,false,false
 balanceOf,burn,9,false,true
+msgSender,burn,9,false,true
 owner,burn,9,false,true
 totalBurn,balanceOf,10,false,false
 totalIn,balanceOf,10,false,false
@@ -15,13 +17,17 @@ totalOut,balanceOf,10,false,false
 totalMint,balanceOf,10,false,false
 allowance,transferFrom,11,false,true
 canTransfer,transferFrom,11,false,true
+msgSender,transferFrom,11,false,true
 balanceOf,transferFrom,11,false,true
 transferFrom,spentTotal,13,true,false
 owner,disallowPrecirculation,14,false,true
+msgSender,disallowPrecirculation,14,false,true
 transfer,totalIn,15,true,false
 increaseAllowance,allowanceTotal,16,true,false
+msgSender,transfer,17,false,true
 canTransfer,transfer,17,false,true
 balanceOf,transfer,17,false,true
+msgSender,allowPrecirculation,18,false,true
 owner,allowPrecirculation,18,false,true
 burn,totalBurn,20,true,false
 mint,totalMint,21,true,false
@@ -31,6 +37,8 @@ transfer,totalOut,23,true,false
 balanceOf,totalBalances,24,true,false
 spentTotal,allowance,25,false,false
 allowanceTotal,allowance,25,false,false
+msgSender,mint,26,false,true
 owner,mint,26,false,true
 burn,allBurn,27,true,false
 allowance,increaseAllowance,28,false,true
+msgSender,increaseAllowance,28,false,true

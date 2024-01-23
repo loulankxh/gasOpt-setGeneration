@@ -1,8 +1,8 @@
-allowance,msgSender,owner,paused,pendingOwner,totalBalances,totalBurn,totalIn,totalMint,totalOut,totalSupply,,balanceOf
-allBurn,allMint,allowance,balanceOf,msgSender,owner,paused,pendingOwner,totalBalances,,totalSupply
-allBurn,allMint,allowanceTotal,balanceOf,decreaseAllowanceTotal,msgSender,owner,paused,pendingOwner,spentTotal,totalBalances,,allowance,totalSupply
-allowanceTotal,decreaseAllowanceTotal,msgSender,owner,paused,pendingOwner,spentTotal,totalBalances,totalBurn,totalIn,totalMint,totalOut,totalSupply,,balanceOf,allowance
-allowance,balanceOf,msgSender,owner,paused,pendingOwner,totalBalances,totalSupply,
-allowanceTotal,balanceOf,decreaseAllowanceTotal,msgSender,owner,paused,pendingOwner,spentTotal,totalBalances,totalSupply,,allowance
-allBurn,allMint,allowanceTotal,decreaseAllowanceTotal,msgSender,owner,paused,pendingOwner,spentTotal,totalBalances,totalBurn,totalIn,totalMint,totalOut,,balanceOf,allowance,totalSupply
-allBurn,allMint,allowance,msgSender,owner,paused,pendingOwner,totalBalances,totalBurn,totalIn,totalMint,totalOut,,balanceOf,totalSupply
+pendingOwner,decreaseAllowanceTotal,totalMint,totalBurn,this,totalBalances,allowanceTotal,totalOut,totalSupply,paused,owner,totalIn,spentTotal,,balanceOf,allowance
+pendingOwner,decreaseAllowanceTotal,allBurn,this,totalBalances,allowanceTotal,balanceOf,paused,owner,allMint,spentTotal,,totalSupply,allowance
+pendingOwner,totalMint,totalBurn,allowance,this,totalBalances,totalOut,totalSupply,paused,owner,totalIn,,balanceOf
+pendingOwner,totalIn,totalMint,totalBurn,allowance,allBurn,this,totalBalances,totalOut,paused,owner,allMint,,totalSupply,balanceOf
+pendingOwner,allowance,this,totalBalances,totalSupply,balanceOf,paused,owner,
+pendingOwner,allowance,this,allBurn,totalBalances,balanceOf,paused,owner,allMint,,totalSupply
+pendingOwner,decreaseAllowanceTotal,this,totalBalances,allowanceTotal,totalSupply,balanceOf,paused,owner,spentTotal,,allowance
+pendingOwner,decreaseAllowanceTotal,totalIn,totalBurn,totalMint,allBurn,this,totalBalances,allowanceTotal,totalOut,paused,owner,allMint,spentTotal,,totalSupply,balanceOf,allowance
