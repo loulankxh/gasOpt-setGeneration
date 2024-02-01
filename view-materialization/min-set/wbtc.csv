@@ -1,8 +1,8 @@
-pendingOwner,decreaseAllowanceTotal,totalMint,totalBurn,this,totalBalances,allowanceTotal,totalOut,totalSupply,paused,owner,totalIn,spentTotal,,balanceOf,allowance
-pendingOwner,decreaseAllowanceTotal,allBurn,this,totalBalances,allowanceTotal,balanceOf,paused,owner,allMint,spentTotal,,totalSupply,allowance
-pendingOwner,totalMint,totalBurn,allowance,this,totalBalances,totalOut,totalSupply,paused,owner,totalIn,,balanceOf
-pendingOwner,totalIn,totalMint,totalBurn,allowance,allBurn,this,totalBalances,totalOut,paused,owner,allMint,,totalSupply,balanceOf
-pendingOwner,allowance,this,totalBalances,totalSupply,balanceOf,paused,owner,
-pendingOwner,allowance,this,allBurn,totalBalances,balanceOf,paused,owner,allMint,,totalSupply
-pendingOwner,decreaseAllowanceTotal,this,totalBalances,allowanceTotal,totalSupply,balanceOf,paused,owner,spentTotal,,allowance
-pendingOwner,decreaseAllowanceTotal,totalIn,totalBurn,totalMint,allBurn,this,totalBalances,allowanceTotal,totalOut,paused,owner,allMint,spentTotal,,totalSupply,balanceOf,allowance
+pendingOwner,totalMint,spentTotal,allBurn,totalBurn,decreaseAllowanceTotal,totalOut,totalBalances,this,allMint,totalIn,paused,owner,allowanceTotal,,totalSupply,allowance,balanceOf
+pendingOwner,totalSupply,spentTotal,totalBurn,decreaseAllowanceTotal,totalOut,totalBalances,this,totalMint,totalIn,paused,owner,allowanceTotal,,allowance,balanceOf
+pendingOwner,totalMint,allBurn,totalBurn,allowance,totalOut,totalBalances,this,allMint,totalIn,paused,owner,,totalSupply,balanceOf
+pendingOwner,allBurn,allowance,paused,balanceOf,allMint,this,totalBalances,owner,,totalSupply
+pendingOwner,totalSupply,totalBurn,allowance,totalOut,totalBalances,this,totalMint,totalIn,paused,owner,,balanceOf
+pendingOwner,totalSupply,allowance,paused,balanceOf,this,totalBalances,owner,
+pendingOwner,spentTotal,allBurn,decreaseAllowanceTotal,totalBalances,balanceOf,allMint,this,paused,owner,allowanceTotal,,totalSupply,allowance
+pendingOwner,totalSupply,spentTotal,decreaseAllowanceTotal,paused,balanceOf,this,totalBalances,owner,allowanceTotal,,allowance

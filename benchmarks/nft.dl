@@ -14,13 +14,13 @@
 .decl isApprovedForAll(owner:address, operator:address, b: bool)[0,1]
 
 // Transactions
-.decl recv_mint(tokenId: uint, to: address)
+.decl recv_mint(to: address, tokenId: uint)
 .decl recv_burn(tokenId: uint)
 .decl recv_transfer(to: address, tokenId: uint)
 .decl recv_transferFrom(from: address, to: address, tokenId: uint)
 .decl recv_setApproval(tokenId:uint, p:address, b: bool)
 .decl recv_setApprovalForAll(operator: address, _approved: bool)
-.decl setApproval(o:address, tokenId:uint, p:address, b: bool)[0,1]
+.decl setApproval(o:address, tokenId:uint, p:address, b: bool)[0,1,2]
 .decl setApprovedForAll(owner:address, operator:address, b: bool)[0,1]
 .decl transfer(tokenId: uint, from: address, to: address, time: uint)
 
@@ -45,7 +45,7 @@ approval(o,tokenId,p,b) :- setApproval(o,tokenId,p,b).
 isApprovedForAll(p,o,b) :- setApprovedForAll(p,o,b).
 
 // Transactions
-transfer(tokenId,0,to,time) :- recv_mint(tokenId,to), msgSender(s), owner(s),
+transfer(tokenId,0,to,time) :- recv_mint(to,tokenId), msgSender(s), owner(s),
                                exists(tokenId,false), now(time), to!=0.
 transfer(tokenId,p,0,time) :- recv_burn(tokenId), ownerOf(tokenId,p), msgSender(s),
                               owner(s), exists(tokenId,true), now(time).

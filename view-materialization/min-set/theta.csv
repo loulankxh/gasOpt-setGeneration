@@ -1,8 +1,0 @@
-unlockTime,totalMint,precirculated,totalBurn,totalBalances,allowanceTotal,totalOut,totalSupply,owner,totalIn,spentTotal,,balanceOf,allowance
-unlockTime,precirculated,totalBalances,allowanceTotal,totalSupply,balanceOf,owner,spentTotal,,allowance
-unlockTime,totalIn,precirculated,totalBurn,totalMint,allBurn,totalBalances,allowanceTotal,totalOut,owner,allMint,spentTotal,,totalSupply,balanceOf,allowance
-unlockTime,totalIn,precirculated,totalBurn,totalMint,allowance,allBurn,totalBalances,totalOut,owner,allMint,,totalSupply,balanceOf
-unlockTime,precirculated,allBurn,totalBalances,allowanceTotal,balanceOf,owner,allMint,spentTotal,,totalSupply,allowance
-unlockTime,totalMint,precirculated,totalBurn,allowance,totalBalances,totalOut,totalSupply,owner,totalIn,,balanceOf
-unlockTime,precirculated,allowance,allBurn,totalBalances,balanceOf,owner,allMint,,totalSupply
-unlockTime,precirculated,allowance,totalBalances,totalSupply,balanceOf,owner,

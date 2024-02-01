@@ -14,7 +14,7 @@
 .decl redeemByPartition(p: address, q:uint, amount: uint)
 .decl recv_redeemByPartition(p: address, q:uint, amount: uint)
 .decl transferByPartition(from: address, to: address, q:uint, amount: uint)
-.decl recv_transferByPartition(to: address, q:uint, amount: uint)
+.decl recv_transferByPartition(from: address, to: address, q:uint, amount: uint)
 
 // Interfaces
 .public recv_issueByPartition
@@ -31,8 +31,11 @@ totalSupply(0) :- constructor().
 issueByPartition(p,q,n) :- recv_issueByPartition(p,q,n), msgSender(s), owner(s), p!=0.
 redeemByPartition(p,q,n) :- recv_redeemByPartition(p,q,n), msgSender(s), owner(s), 
                           p!=0 ,balanceOfByPartition(p,q,m), n<=m.
-transferByPartition(s,r,q,n) :- recv_transferByPartition(r,q,n), 
-                                msgSender(s), balanceOfByPartition(s,q,m), n<=m.
+// transferByPartition(s,r,q,n) :- recv_transferByPartition(s,r,q,n), 
+//                                 msgSender(s), balanceOfByPartition(s,q,m), n<=m.
+transferByPartition(s,r,q,n) :- recv_transferByPartition(s,r,q,n), 
+                                balanceOfByPartition(s,q,m), n<=m.
+
 
 .decl totalMint(p: address, q:uint, n: uint)[0,1]
 .decl totalBurn(p: address, q:uint, n: uint)[0,1]

@@ -54,6 +54,7 @@ transfer(s,r,n) :- recv_transfer(r,n), msgSender(s), balanceOf(s,m), n<=m.
 .decl totalBurn(p: address, n: uint)[0]
 .decl totalOut(p: address, n: uint)[0]
 .decl totalIn(p: address, n: uint)[0]
+totalMint(p,n) :- constructor(_,_,_,n,_,p).
 totalOut(p,s) :- transfer(p,_,_), s = sum n: transfer(p,_,n).
 totalIn(p,s) :- transfer(_,p,_), s = sum n: transfer(_,p,n).
 totalMint(p,s) :- mint(p,_), s = sum n: mint(p,n).

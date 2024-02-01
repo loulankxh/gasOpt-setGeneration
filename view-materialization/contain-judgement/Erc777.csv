@@ -1,1 +1,1 @@
-allowance,defaultOperator,balanceOf,owner,msgSender,revokedDefaultOperator,operators
+allowance,defaultOperator,balanceOf,msgSender,revokedDefaultOperator,operators

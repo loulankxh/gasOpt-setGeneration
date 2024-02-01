@@ -165,7 +165,9 @@ if __name__ == '__main__':
             min_func_all = list()
             for min_set in minimal_all:
                 min_set = set(min_set) - special_keys # remove all special keys
-                func_set = (full_set - set(min_set)) & direct_dependency_set_all
+                if "nft" in name_normalize:
+                    min_set.add("ownerOf")
+                func_set = ((full_set - set(min_set)) & direct_dependency_set_all) | set(calculate_on_demand)
                 min_func_list = list(min_set)
                 min_func_list.extend([""]+list(func_set))
                 print("\nmin & function relations")
@@ -176,6 +178,13 @@ if __name__ == '__main__':
                 csv_writer = csv.writer(file)
                 for row in min_func_all:
                     csv_writer.writerow(row)
-            
+
+            # full_arithmetic_set = direct_dependency_set_all
+            # full_arithmetic_func_set = set(calculate_on_demand)
+            # full_arithmetic_list = list(full_arithmetic_set)
+            # full_arithmetic_list.extend([""]+list(full_arithmetic_func_set))
+            # with open("./view-materialization/fullArithmetic/" + name_normalize.split(".")[0] + '.csv', 'w', newline='') as file:
+            #     csv_writer = csv.writer(file)
+            #     csv_writer.writerow(full_arithmetic_list)
 
 
