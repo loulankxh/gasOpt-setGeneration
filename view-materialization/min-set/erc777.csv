@@ -1,8 +1,8 @@
-spentTotal,allBurn,allowanceTotal,operators,balanceOf,allMint,defaultOperator,revokedDefaultOperator,,totalSupply,allowance
-allBurn,totalOut,totalBurn,allowance,allMint,operators,totalMint,totalIn,defaultOperator,revokedDefaultOperator,,totalSupply,balanceOf
-totalSupply,totalOut,totalBurn,allowance,operators,totalMint,totalIn,defaultOperator,revokedDefaultOperator,,balanceOf
-totalSupply,allowance,operators,balanceOf,defaultOperator,revokedDefaultOperator,
-totalMint,revokedDefaultOperator,allBurn,spentTotal,totalBurn,totalOut,operators,allMint,totalIn,defaultOperator,allowanceTotal,,totalSupply,allowance,balanceOf
-totalSupply,spentTotal,revokedDefaultOperator,totalOut,totalBurn,operators,totalMint,totalIn,defaultOperator,allowanceTotal,,allowance,balanceOf
-allBurn,allowance,operators,balanceOf,allMint,defaultOperator,revokedDefaultOperator,,totalSupply
-totalSupply,spentTotal,allowanceTotal,operators,balanceOf,defaultOperator,revokedDefaultOperator,,allowance
+defaultOperator,allMint,revokedDefaultOperator,totalBurn,totalMint,allBurn,totalIn,totalOut,operators,allowance,,totalSupply,balanceOf
+defaultOperator,revokedDefaultOperator,allowanceTotal,totalSupply,balanceOf,operators,spentTotal,,allowance
+defaultOperator,allMint,revokedDefaultOperator,allBurn,allowanceTotal,balanceOf,operators,spentTotal,,totalSupply,allowance
+defaultOperator,revokedDefaultOperator,totalSupply,balanceOf,operators,allowance,
+defaultOperator,allMint,revokedDefaultOperator,allBurn,balanceOf,operators,allowance,,totalSupply
+defaultOperator,revokedDefaultOperator,totalBurn,totalMint,allowanceTotal,totalIn,totalSupply,totalOut,operators,spentTotal,,allowance,balanceOf
+defaultOperator,revokedDefaultOperator,totalBurn,totalMint,totalIn,totalSupply,totalOut,operators,allowance,,balanceOf
+defaultOperator,allMint,revokedDefaultOperator,totalBurn,totalMint,allowanceTotal,allBurn,totalIn,totalOut,operators,spentTotal,,balanceOf,totalSupply,allowance
